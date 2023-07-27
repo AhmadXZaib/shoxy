@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -15,6 +16,18 @@ class _HomeScreen1State extends State<HomeScreen1> {
   Color color = Colors.redAccent;
   BorderRadiusGeometry radiusGeometry =
       const BorderRadius.all(Radius.circular(40));
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) {
+        onBtnPressed();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,20 +51,21 @@ class _HomeScreen1State extends State<HomeScreen1> {
         ),
       ]),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final random = Random();
-          height = random.nextInt(300).toDouble();
-          wigth = random.nextInt(300).toDouble();
-
-          color = Color.fromRGBO(
-              random.nextInt(256), random.nextInt(256), random.nextInt(256), 1);
-          radiusGeometry =
-              BorderRadius.circular(random.nextInt(100).toDouble());
-
-          setState(() {});
-        },
+        onPressed: () => onBtnPressed(),
         child: const Icon(Icons.refresh),
       ),
     );
+  }
+
+  void onBtnPressed() {
+    final random = Random();
+    height = random.nextInt(300).toDouble();
+    wigth = random.nextInt(300).toDouble();
+
+    color = Color.fromRGBO(
+        random.nextInt(256), random.nextInt(256), random.nextInt(256), 1);
+    radiusGeometry = BorderRadius.circular(random.nextInt(100).toDouble());
+
+    setState(() {});
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shoxy/ubaid/core/utils/all_constants.dart';
 import 'package:shoxy/ubaid/core/widgets/app_text.dart';
 import 'package:shoxy/ubaid/screens/02_login_screen/login_screen.dart';
 import 'package:shoxy/ubaid/screens/03_home_screen/home_screen.dart';
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(milliseconds: 3000),
       () {
         if (isLoggedIn) {
           Navigator.pushReplacement(
@@ -47,67 +46,28 @@ class _SplashScreenState extends State<SplashScreen> {
         });
       },
     );
+    // setState(() {
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF5B9EE1),
       body: Stack(
         children: [
           AnimatedPositioned(
-            top: update ? 200 : 500,
+            duration: const Duration(milliseconds: 1700),
+            top: update ? 300 : 500,
             left: 150,
-            duration: const Duration(milliseconds: 1500),
             child: const AppText(
-              text: 'Shoxy',
-              fontSize: 30,
-              color: AppColors.mainColor,
-              fontWeight: FontWeight.w700,
+              text: 'OXY BOOTS',
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
+              color: Colors.white,
             ),
-          ),
-          Positioned(
-            top: 350,
-            left: 160,
-            child: Visibility(
-              visible: update,
-              child: const CircularProgressIndicator(),
-            ),
-          ),
-          AnimationWidgets(update: update),
+          )
         ],
-      ),
-    );
-  }
-}
-
-class AnimationWidgets extends StatelessWidget {
-  const AnimationWidgets({
-    super.key,
-    required this.update,
-  });
-
-  final bool update;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedPositioned(
-      duration: const Duration(milliseconds: 300),
-      top: update ? MediaQuery.of(context).size.height / 2 : 500,
-      left: update ? MediaQuery.of(context).size.width / 2.5 : 100,
-      // curve: Curves.decelerate,
-      child: InkWell(
-        onTap: () {
-          // setState(() {
-          //   update = !update;
-          // });
-        },
-        child: AnimatedContainer(
-          height: update ? 20 : 150,
-          width: update ? 20 : 150,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          color: Colors.cyan,
-        ),
       ),
     );
   }

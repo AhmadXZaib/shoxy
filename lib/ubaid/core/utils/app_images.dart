@@ -4,5 +4,7 @@ class AppImages {
   static String animationsPath = '${path}animations/';
 
   ///**********App Images************/
-  static String logo = "${imgPath}logo.png";
+  static String first = "${imgPath}first.png";
+  static String second = "${imgPath}second.png";
+  static String third = "${imgPath}third.png";
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shoxy/ahmad/screens/01_splash_screen1/splash_screen1.dart';
-import 'package:shoxy/ubaid/screens/01_splash_screen/splash_screen.dart';
+import 'package:shoxy/ahmad/screens/03_onbording/app_bar_a.dart';
+
+import 'package:shoxy/ahmad/screens/03_onbording/ondording_screen.dart';
+import 'package:shoxy/ahmad/screens/03_onbording/recovery_screen.dart';
+import 'package:shoxy/ahmad/screens/03_onbording/signup_screen.dart';
+import 'package:shoxy/ubaid/screens/03_onboarding/onboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen1(),
+      home: const AppBarA(),
     );
   }
 }
